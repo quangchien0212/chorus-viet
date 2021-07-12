@@ -3,7 +3,8 @@ class CreateChords < ActiveRecord::Migration[6.1]
     create_table :chords do |t|
       t.string :key, null: false
       t.string :suffix, null: false
-      t.string :type, null: true, default: 'guitar'
+      t.string :name, null: false
+      t.string :chord_type, null: true, default: 'guitar'
       t.timestamps
     end
   end

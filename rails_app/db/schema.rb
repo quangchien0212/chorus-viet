@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(version: 2021_07_04_075027) do
   create_table "chords", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "suffix", null: false
-    t.string "type", default: "guitar"
+    t.string "name", null: false
+    t.string "chord_type", default: "guitar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
