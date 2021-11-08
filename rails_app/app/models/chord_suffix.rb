@@ -1,0 +1,2 @@
+class ChordSuffix < ApplicationRecord
+end

@@ -10,35 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_04_075027) do
+ActiveRecord::Schema.define(version: 2021_11_08_135333) do
 
-  create_table "chord_position_images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "mime_type", null: false
-    t.string "svg", null: false
-    t.bigint "chord_position_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["chord_position_id"], name: "index_chord_position_images_on_chord_position_id"
+  create_table "chord_keys", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
   end
 
   create_table "chord_positions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "frets", null: false
-    t.string "fingers", null: false
-    t.integer "barres"
-    t.boolean "capo"
-    t.bigint "chord_id"
+    t.bigint "chord_id", null: false
+    t.string "frets"
+    t.string "fingers"
+    t.string "base_fret"
+    t.string "barres"
+    t.string "midi"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chord_id"], name: "index_chord_positions_on_chord_id"
   end
 
-  create_table "chords", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "suffix", null: false
+  create_table "chord_suffixes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.string "chord_type", default: "guitar"
+  end
+
+  create_table "chords", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "chord_key_id", null: false
+    t.bigint "chord_suffix_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["chord_key_id"], name: "index_chords_on_chord_key_id"
+    t.index ["chord_suffix_id"], name: "index_chords_on_chord_suffix_id"
   end
 
 end

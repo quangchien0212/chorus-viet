@@ -1,0 +1,2 @@
+class ChordKey < ApplicationRecord
+end
